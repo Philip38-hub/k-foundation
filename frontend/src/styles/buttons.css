@@ -1,0 +1,86 @@
+/* Button hover effects */
+.cta-button {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}
+
+/* Ripple effect */
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.cta-button:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Specific button hover colors */
+.cta-button.help:hover {
+    background-color: #1976D2 !important; /* Darker accent color */
+}
+
+.cta-button.involved:hover {
+    background-color: #388E3C !important; /* Darker secondary color */
+}
+
+.cta-button.donate:hover {
+    background-color: #FB8C00 !important; /* Darker primary color */
+}
+
+/* Navbar button hover effects */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Utility nav hover effects */
+.utility-nav a, .utility-nav button {
+    transition: all 0.3s ease;
+}
+
+.utility-nav a:hover, .utility-nav button:hover {
+    color: var(--primary-color) !important;
+    transform: translateY(-1px);
+}
+
+/* Contact info hover effect */
+.contact-info a {
+    transition: all 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--primary-color) !important;
+}

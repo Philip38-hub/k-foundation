@@ -1,0 +1,164 @@
+@import './styles/buttons.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #FFA726;    /* Warm Orange */
+  --secondary-color: #4CAF50;  /* Soft Green */
+  --accent-color: #42A5F5;     /* Sky Blue */
+  --neutral-color: #F5F5F5;    /* Light Gray */
+  --dark-orange: #FB8C00;      /* Hover state for primary */
+  --dark-green: #388E3C;       /* Hover state for secondary */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased text-gray-800;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--neutral-color);
+    color: #333;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-2 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-orange-500 text-white hover:bg-orange-600;
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--dark-orange);
+  }
+  
+  .btn-secondary {
+    @apply bg-green-500 text-white hover:bg-green-600;
+    background-color: var(--secondary-color);
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--dark-green);
+  }
+  
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .main-header {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .top-bar {
+    background-color: white;
+    padding: 8px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .main-nav {
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+  }
+  
+  .hero {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/images/hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+  }
+  
+  .hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .cta-button {
+    padding: 15px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+  }
+  
+  .cta-button.help {
+    background-color: var(--accent-color);
+    color: white;
+  }
+  
+  .cta-button.involved {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+  
+  .cta-button.donate {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .mission {
+    background-color: #FED766;
+    padding: 60px 5%;
+    text-align: center;
+  }
+  
+  .mission h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
