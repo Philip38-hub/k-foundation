@@ -46,6 +46,46 @@
     background-color: #FB8C00 !important; /* Darker primary color */
 }
 
+/* Header layout */
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top bar styles */
+#top-bar {
+    height: 40px; /* Fixed height for top bar */
+    background: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation styles */
+nav {
+    width: 100%;
+    margin-top: -1px; /* Remove the gap caused by the border */
+}
+
+nav .nav-link {
+    position: relative;
+    transition: color 0.2s ease-in-out;
+}
+
+nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+nav .nav-link:hover::after {
+    width: 100%;
+}
+
 /* Navbar button hover effects */
 .nav-link {
     position: relative;
@@ -83,4 +123,74 @@
 
 .contact-info a:hover {
     color: var(--primary-color) !important;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.mobile-menu.closed {
+    max-height: 0;
+    opacity: 0;
+}
+
+/* Hover effects */
+.text-gray-600:hover {
+    color: var(--primary-color);
+    transition: color 0.2s ease-in-out;
+}
+
+/* Icon spacing */
+.contact-info a,
+.utility-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+}
+
+/* Media queries */
+@media (min-width: 768px) {
+    #top-bar::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            rgba(255,255,255,0) 0%,
+            rgba(255,255,255,0) 14%,
+            rgba(255,255,255,1) 15%
+        );
+        z-index: 1;
+    }
+
+    #top-bar .contact-info,
+    #top-bar .utility-nav {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+@media (max-width: 767px) {
+    #top-bar {
+        width: 100%;
+    }
+    
+    .contact-info,
+    .utility-nav {
+        gap: 1rem;
+    }
+    
+    .contact-info a,
+    .utility-nav a {
+        font-size: 1.125rem;
+    }
 }
