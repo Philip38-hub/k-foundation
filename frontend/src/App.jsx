@@ -5,6 +5,7 @@ import About from './components/About';
 import OurWork from './components/OurWork';
 import NewsEvents from './components/NewsEvents';
 import Auth from './components/Auth';
+import Footer from './components/Footer';
 
 function App() {
   const [authModal, setAuthModal] = useState({
@@ -27,9 +28,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex flex-col">
       <Navbar openAuthModal={openAuthModal} />
-      <main>
+      <main className="flex-grow">
         <Hero openAuthModal={openAuthModal} />
         <About />
         <OurWork />
@@ -42,6 +43,8 @@ function App() {
         mode={authModal.mode}
         openAuthModal={openAuthModal}
       />
+      
+      <Footer />
     </div>
   );
 }

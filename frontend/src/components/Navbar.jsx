@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Auth from './Auth';
 import ContactForm from './ContactForm';
+import DonationModal from './DonationModal';
 import '../styles/buttons.css';
 
 const Navbar = ({ openAuthModal }) => {
   const [isMainMenuOpen, setIsMainMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [contactModal, setContactModal] = useState(false);
+  const [donationModal, setDonationModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +24,11 @@ const Navbar = ({ openAuthModal }) => {
 
   const handleGetHelp = () => {
     setContactModal(true);
+  };
+
+  const handleDonate = (e) => {
+    e.preventDefault();
+    setDonationModal(true);
   };
 
   return (
@@ -83,29 +90,30 @@ const Navbar = ({ openAuthModal }) => {
               
               {/* Desktop Navigation */}
               <div className="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-8">
-                <a href="#about" className="nav-link text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">
+                <a href="#about" className={`nav-link ${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-gray-600 px-3 py-2 text-sm font-medium`}>
                   ABOUT
                 </a>
-                <a href="#our-work" className="nav-link text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">
+                <a href="#our-work" className={`nav-link ${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-gray-600 px-3 py-2 text-sm font-medium`}>
                   OUR WORK
                 </a>
                 <button
                   onClick={handleGetInvolved}
-                  className="nav-link text-white hover:text-gray-200 px-3 py-2 text-sm font-medium"
+                  className={`nav-link ${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-gray-600 px-3 py-2 text-sm font-medium`}
                 >
                   GET INVOLVED
                 </button>
                 <button
                   onClick={handleGetHelp}
-                  className="nav-link text-white hover:text-gray-200 px-3 py-2 text-sm font-medium"
+                  className={`nav-link ${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-gray-600 px-3 py-2 text-sm font-medium`}
                 >
                   GET HELP
                 </button>
-                <a href="#news" className="nav-link text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">
+                <a href="#news" className={`nav-link ${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-gray-600 px-3 py-2 text-sm font-medium`}>
                   NEWS & EVENTS
                 </a>
                 <a 
                   href="#donate" 
+                  onClick={handleDonate}
                   className="cta-button donate px-6 py-2 rounded-md text-sm font-medium text-white"
                   style={{ backgroundColor: 'var(--primary-color)' }}
                 >
@@ -116,7 +124,7 @@ const Navbar = ({ openAuthModal }) => {
               {/* Mobile Navigation Button */}
               <div className="sm:hidden flex items-center">
                 <button 
-                  className="text-white hover:text-gray-200"
+                  className={`${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-gray-600`}
                   onClick={() => setIsMainMenuOpen(!isMainMenuOpen)}
                 >
                   <i className={`fas ${isMainMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
@@ -150,6 +158,7 @@ const Navbar = ({ openAuthModal }) => {
                 </a>
                 <a 
                   href="#donate" 
+                  onClick={handleDonate}
                   className="block px-3 py-2 text-base font-medium text-white rounded-md"
                   style={{ backgroundColor: 'var(--primary-color)' }}
                 >
@@ -165,6 +174,12 @@ const Navbar = ({ openAuthModal }) => {
       <ContactForm
         isOpen={contactModal}
         onClose={() => setContactModal(false)}
+      />
+
+      {/* Donation Modal */}
+      <DonationModal
+        isOpen={donationModal}
+        onClose={() => setDonationModal(false)}
       />
     </>
   );
