@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
 
-const Auth = ({ isOpen, onClose, initialMode = 'signin' }) => {
-  const [mode, setMode] = useState(initialMode);
+const Auth = ({ isOpen, onClose, mode, openAuthModal }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -24,6 +23,15 @@ const Auth = ({ isOpen, onClose, initialMode = 'signin' }) => {
   const handleSocialLogin = (provider) => {
     // TODO: Implement social login
     console.log(`Logging in with ${provider}`);
+  };
+
+  const switchMode = () => {
+    const newMode = mode === 'signin' ? 'signup' : 'signin';
+    onClose();
+    // Small delay to ensure smooth transition
+    setTimeout(() => {
+      openAuthModal(newMode);
+    }, 100);
   };
 
   return (
@@ -160,7 +168,7 @@ const Auth = ({ isOpen, onClose, initialMode = 'signin' }) => {
         <p className="mt-4 text-center text-sm text-gray-500">
           {mode === 'signin' ? "Don't have an account? " : 'Already have an account? '}
           <button
-            onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
+            onClick={switchMode}
             className="font-semibold text-orange-500 hover:text-orange-600"
           >
             {mode === 'signin' ? 'Sign up' : 'Sign in'}

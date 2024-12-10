@@ -3,7 +3,7 @@ import Auth from './Auth';
 import ContactForm from './ContactForm';
 import '../styles/buttons.css';
 
-const Navbar = ({ openAuthModal, authModal, closeAuthModal }) => {
+const Navbar = ({ openAuthModal }) => {
   const [isMainMenuOpen, setIsMainMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [contactModal, setContactModal] = useState(false);
@@ -160,13 +160,6 @@ const Navbar = ({ openAuthModal, authModal, closeAuthModal }) => {
           </div>
         </nav>
       </header>
-
-      {/* Auth Modal */}
-      <Auth
-        isOpen={authModal.isOpen}
-        onClose={closeAuthModal}
-        initialMode={authModal.mode}
-      />
 
       {/* Contact Form Modal */}
       <ContactForm
