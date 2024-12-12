@@ -4,7 +4,7 @@ import ContactForm from './ContactForm';
 import DonationModal from './DonationModal';
 import '../styles/buttons.css';
 
-const Navbar = ({ openAuthModal }) => {
+const Navbar = ({ openAuthModal, onOpenAuth }) => {
   const [isMainMenuOpen, setIsMainMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [contactModal, setContactModal] = useState(false);
@@ -19,7 +19,7 @@ const Navbar = ({ openAuthModal }) => {
   }, []);
 
   const handleGetInvolved = () => {
-    openAuthModal('signup');
+    onOpenAuth('signup');
   };
 
   const handleGetHelp = () => {
@@ -40,19 +40,19 @@ const Navbar = ({ openAuthModal }) => {
             <div className="flex justify-end items-center h-8"> 
               {/* Social Links */}
               <div className="contact-info flex items-center space-x-3 text-sm">
-                <a href="https://www.facebook.com/homefrontnj/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700">
+                <a href="https://www.facebook.com/Kosodonj/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700">
                   <i className="fab fa-facebook-f"></i>
                 </a>
-                <a href="mailto:info@homefrontnj.org" className="text-gray-500 hover:text-gray-700">
+                <a href="mailto:info@Kosodonj.org" className="text-gray-500 hover:text-gray-700">
                   <i className="fas fa-envelope"></i>
                 </a>
-                <a href="https://twitter.com/homefrontnj" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700">
+                <a href="https://twitter.com/Kosodonj" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700">
                   <i className="fab fa-twitter"></i>
                 </a>
-                <a href="https://www.linkedin.com/company/homefront-nj/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700">
+                <a href="https://www.linkedin.com/company/Kosodo-nj/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://www.instagram.com/homefrontnj/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700">
+                <a href="https://www.instagram.com/Kosodonj/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700">
                   <i className="fab fa-instagram"></i>
                 </a>
               </div>
@@ -62,14 +62,14 @@ const Navbar = ({ openAuthModal }) => {
               {/* Utility Nav */}
               <div className="utility-nav flex items-center space-x-4 text-sm">
                 <button
-                  onClick={() => openAuthModal('signin')}
+                  onClick={() => onOpenAuth('signin')}
                   className="text-gray-500 hover:text-gray-700 flex items-center space-x-2"
                 >
                   <i className="fas fa-lock text-xs"></i>
                   <span className="hidden md:inline">Sign in</span>
                 </button>
                 <button
-                  onClick={() => openAuthModal('signup')}
+                  onClick={() => onOpenAuth('signup')}
                   className="text-gray-500 hover:text-gray-700 flex items-center space-x-2"
                 >
                   <i className="fas fa-user-plus text-xs"></i>
@@ -84,14 +84,17 @@ const Navbar = ({ openAuthModal }) => {
         <nav className={`transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-sm' : 'bg-transparent'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
-              {/* Logo with padding */}
+              {/* Logo */}
               <div className="flex-shrink-0 relative z-50">
-                <div className="w-40 h-40 flex items-center justify-center -mt-12 -mb-12">
-                  <div className="w-36 h-36 relative">
-                    <div className="absolute left-0 top-0 w-1/3 h-full" style={{ backgroundColor: '#009B4D' }}></div>
-                    <div className="absolute right-0 top-0 w-2/3 h-1/2" style={{ backgroundColor: '#3DA8E4' }}></div>
-                    <div className="absolute right-0 bottom-0 w-2/3 h-1/2" style={{ backgroundColor: '#F7B928' }}></div>
-                  </div>
+                <div className="w-40 h-40 flex items-center justify-center -mt-8 -mb-8">
+                  <img 
+                    src="/klogo2.jpg"
+                    alt="K Logo"
+                    className="w-36 h-36 object-contain"
+                    style={{
+                      filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
+                    }}
+                  />
                 </div>
               </div>
               
@@ -117,6 +120,9 @@ const Navbar = ({ openAuthModal }) => {
                 </button>
                 <a href="#news" className={`nav-link ${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-gray-600 px-3 py-2 text-sm font-medium`}>
                   NEWS & EVENTS
+                </a>
+                <a href="#kosodo-team" className={`nav-link ${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-gray-600 px-3 py-2 text-sm font-medium`}>
+                  K'OSODO
                 </a>
                 <a 
                   href="#donate" 
@@ -162,6 +168,9 @@ const Navbar = ({ openAuthModal }) => {
                 </button>
                 <a href="#news" className="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">
                   NEWS & EVENTS
+                </a>
+                <a href="#kosodo-team" className="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">
+                  K'OSODO
                 </a>
                 <a 
                   href="#donate" 

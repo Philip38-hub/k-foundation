@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -52,7 +52,7 @@ func getPrograms(c *gin.Context) {
 			},
 			{
 				"id":          2,
-				"name":        "HomeFront Cares",
+				"name":        "Kosodo Cares",
 				"description": "Emergency assistance and basic needs support",
 			},
 		},

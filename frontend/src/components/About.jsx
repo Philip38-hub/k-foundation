@@ -10,14 +10,14 @@ const About = () => {
           
           {/* Main content aligned with logo */}
           <div className="col-span-10 lg:col-span-9 px-4 sm:px-0">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-8">About HomeFront</h2>
+            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-8">About Kosodo</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  HomeFront's mission is to end homelessness in Central New Jersey by harnessing the caring, resources, and expertise of the community. We work to break the cycle of poverty and end homelessness in Central New Jersey through a comprehensive approach that provides emergency shelter, housing assistance, life skills training, and other essential services.
+                La mission de Kosodo est de mettre fin à l'itinérance dans la région de Central Lake en exploitant l'attention, les ressources et l'expertise de la communauté. Nous travaillons à briser le cycle de la pauvreté et à mettre fin au sans-abrisme dans la région de Central Lake grâce à une approche globale qui fournit un abri d'urgence, une aide au logement, une formation aux compétences de vie et d'autres services essentiels.
                 </p>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  We believe that every individual deserves a safe, secure place to call home and the opportunity to build a better future. Our comprehensive approach addresses both immediate needs and long-term solutions to help families achieve lasting stability and self-sufficiency.
+                Nous pensons que chaque individu mérite un endroit sûr et sécurisé où vivre et la possibilité de construire un avenir meilleur. Notre approche globale répond à la fois aux besoins immédiats et aux solutions à long terme pour aider les familles à atteindre une stabilité et une autonomie durables.
                 </p>
               </div>
               <div className="bg-gray-100 p-8 rounded-lg">
@@ -29,7 +29,7 @@ const About = () => {
                   </li>
                   <li className="flex items-start">
                     <span className="text-3xl font-bold text-orange-500 mr-4">90%</span>
-                    <span className="text-gray-700">Success rate in permanent housing</span>
+                    <span className="text-gray-700">Success rate</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-3xl font-bold text-orange-500 mr-4">30+</span>

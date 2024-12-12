@@ -27,7 +27,7 @@ const NewsEvents = () => {
                   <div className="border-b border-gray-200 pb-6">
                     <span className="text-sm text-gray-500">November 15, 2023</span>
                     <h4 className="text-xl font-bold mt-2 mb-3">New Housing Initiative Launched</h4>
-                    <p className="text-gray-600">HomeFront announces new partnership with local property owners to provide affordable housing options for families in transition.</p>
+                    <p className="text-gray-600">Kosodo announces new partnership with local property owners to provide affordable housing options for families in transition.</p>
                     <a href="#" className="text-blue-500 hover:text-blue-700 mt-2 inline-block">Read more →</a>
                   </div>
                 </div>

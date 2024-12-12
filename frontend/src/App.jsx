@@ -4,46 +4,79 @@ import Hero from './components/Hero';
 import About from './components/About';
 import OurWork from './components/OurWork';
 import NewsEvents from './components/NewsEvents';
+import KosodoTeam from './components/KosodoTeam';
 import Auth from './components/Auth';
 import Footer from './components/Footer';
+import DonationModal from './components/DonationModal';
+import ContactForm from './components/ContactForm';
 
 function App() {
-  const [authModal, setAuthModal] = useState({
-    isOpen: false,
-    mode: 'signin'
-  });
+  const [authOpen, setAuthOpen] = useState(false);
+  const [authMode, setAuthMode] = useState('signin');
+  const [donationOpen, setDonationOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
-  const openAuthModal = (mode) => {
-    setAuthModal({
-      isOpen: true,
-      mode
-    });
+  const handleOpenAuth = (mode = 'signin') => {
+    setAuthMode(mode);
+    setAuthOpen(true);
   };
 
-  const closeAuthModal = () => {
-    setAuthModal({
-      isOpen: false,
-      mode: 'signin'
-    });
+  const handleCloseAuth = () => {
+    setAuthOpen(false);
+  };
+
+  const handleOpenDonation = () => {
+    setDonationOpen(true);
+  };
+
+  const handleCloseDonation = () => {
+    setDonationOpen(false);
+  };
+
+  const handleOpenContact = () => {
+    setContactOpen(true);
+  };
+
+  const handleCloseContact = () => {
+    setContactOpen(false);
   };
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <Navbar openAuthModal={openAuthModal} />
+      <Navbar 
+        onOpenAuth={handleOpenAuth}
+        onOpenDonation={handleOpenDonation}
+        onOpenContact={handleOpenContact}
+      />
       <main className="flex-grow">
-        <Hero openAuthModal={openAuthModal} />
+        <Hero 
+          onOpenAuth={handleOpenAuth}
+          onOpenDonation={handleOpenDonation}
+          onOpenContact={handleOpenContact}
+        />
         <About />
         <OurWork />
         <NewsEvents />
+        <KosodoTeam />
       </main>
 
-      <Auth
-        isOpen={authModal.isOpen}
-        onClose={closeAuthModal}
-        mode={authModal.mode}
-        openAuthModal={openAuthModal}
+      <Auth 
+        isOpen={authOpen} 
+        onClose={handleCloseAuth}
+        mode={authMode}
+        onSwitchMode={(mode) => setAuthMode(mode)}
       />
-      
+
+      <DonationModal
+        isOpen={donationOpen}
+        onClose={handleCloseDonation}
+      />
+
+      <ContactForm
+        isOpen={contactOpen}
+        onClose={handleCloseContact}
+      />
+
       <Footer />
     </div>
   );

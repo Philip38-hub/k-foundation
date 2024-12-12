@@ -174,8 +174,8 @@ const DonationModal = ({ isOpen, onClose }) => {
           <p>Your donation will help us continue our mission to help those in need.</p>
           <p className="mt-1">
             For any issues, please contact us at{' '}
-            <a href="mailto:support@homefront.org" className="text-orange-500 hover:text-orange-600">
-              support@homefront.org
+            <a href="mailto:support@Kosodo.org" className="text-orange-500 hover:text-orange-600">
+              support@Kosodo.org
             </a>
           </p>
         </div>
