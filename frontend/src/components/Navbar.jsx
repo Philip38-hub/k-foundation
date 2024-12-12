@@ -84,12 +84,19 @@ const Navbar = ({ openAuthModal }) => {
         <nav className={`transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-sm' : 'bg-transparent'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
-              <div className="flex-shrink-0 flex items-center">
-                <img className="h-8 w-auto" src="/logo.svg" alt="HomeFront" />
+              {/* Logo with padding */}
+              <div className="flex-shrink-0 relative z-50">
+                <div className="w-40 h-40 flex items-center justify-center -mt-12 -mb-12">
+                  <div className="w-36 h-36 relative">
+                    <div className="absolute left-0 top-0 w-1/3 h-full" style={{ backgroundColor: '#009B4D' }}></div>
+                    <div className="absolute right-0 top-0 w-2/3 h-1/2" style={{ backgroundColor: '#3DA8E4' }}></div>
+                    <div className="absolute right-0 bottom-0 w-2/3 h-1/2" style={{ backgroundColor: '#F7B928' }}></div>
+                  </div>
+                </div>
               </div>
               
               {/* Desktop Navigation */}
-              <div className="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-8">
+              <div className="hidden md:flex md:items-center md:space-x-8 ml-28">
                 <a href="#about" className={`nav-link ${isScrolled ? 'text-gray-900' : 'text-white'} hover:text-gray-600 px-3 py-2 text-sm font-medium`}>
                   ABOUT
                 </a>

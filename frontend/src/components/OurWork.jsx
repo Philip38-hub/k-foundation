@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const OurWork = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const cardContainerRef = useRef(null);
 
   const workItems = [
     {
@@ -44,59 +43,63 @@ const OurWork = () => {
 
   const handleNext = () => {
     if (isAnimating) return;
-    
     setIsAnimating(true);
-    const container = cardContainerRef.current;
-    
-    // Add animation classes
-    container.classList.add('animate-slide-out');
-    
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % workItems.length);
-      container.classList.remove('animate-slide-out');
-      container.classList.add('animate-slide-in');
-      
-      setTimeout(() => {
-        container.classList.remove('animate-slide-in');
-        setIsAnimating(false);
-      }, 500);
-    }, 500);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % workItems.length);
+    setTimeout(() => setIsAnimating(false), 500);
   };
 
   const handlePrev = () => {
     if (isAnimating) return;
-    
     setIsAnimating(true);
-    const container = cardContainerRef.current;
-    
-    // Add animation classes
-    container.classList.add('animate-slide-out-reverse');
-    
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + workItems.length) % workItems.length);
-      container.classList.remove('animate-slide-out-reverse');
-      container.classList.add('animate-slide-in-reverse');
-      
-      setTimeout(() => {
-        container.classList.remove('animate-slide-in-reverse');
-        setIsAnimating(false);
-      }, 500);
-    }, 500);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + workItems.length) % workItems.length);
+    setTimeout(() => setIsAnimating(false), 500);
+  };
+
+  const getCardStyles = (index) => {
+    const diff = (index - currentIndex + workItems.length) % workItems.length;
+    let transform = '';
+    let opacity = 0;
+    let zIndex = 0;
+
+    if (diff === 0) { // Current card
+      transform = 'translateX(-50%) scale(1)';
+      opacity = 1;
+      zIndex = 3;
+    } else if (diff === 1 || diff === -3) { // Next card
+      transform = 'translateX(20%) scale(0.85)';
+      opacity = 0.5;
+      zIndex = 2;
+    } else if (diff === workItems.length - 1 || diff === -1) { // Previous card
+      transform = 'translateX(-120%) scale(0.85)';
+      opacity = 0.5;
+      zIndex = 1;
+    } else { // Other cards
+      transform = 'translateX(-50%) scale(0.7)';
+      opacity = 0;
+      zIndex = 0;
+    }
+
+    return {
+      transform,
+      opacity,
+      zIndex,
+      transition: 'all 0.5s ease-in-out'
+    };
   };
 
   return (
-    <section id="our-work" className="py-16 bg-gray-50">
+    <section id="our-work" className="py-16 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Work</h2>
           <p className="text-xl text-gray-600">Making a difference in our community through dedicated programs and initiatives.</p>
         </div>
 
-        <div className="relative">
+        <div className="relative h-[400px]">
           {/* Navigation Buttons */}
           <button
             onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50 focus:outline-none"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 focus:outline-none transition-all duration-300"
             disabled={isAnimating}
           >
             <i className="fas fa-chevron-left text-gray-600"></i>
@@ -104,38 +107,34 @@ const OurWork = () => {
 
           <button
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50 focus:outline-none"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 focus:outline-none transition-all duration-300"
             disabled={isAnimating}
           >
             <i className="fas fa-chevron-right text-gray-600"></i>
           </button>
 
           {/* Cards Container */}
-          <div 
-            ref={cardContainerRef}
-            className="relative overflow-hidden"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-12">
-              {workItems.map((item, index) => (
-                <div
-                  key={index}
-                  className={`bg-white rounded-lg shadow-lg p-6 transform transition-all duration-500 ${
-                    index === currentIndex ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
-                  }`}
-                >
-                  <div className="text-center mb-4">
-                    <i className={`${item.icon} text-4xl text-orange-500`}></i>
+          <div className="relative w-full h-full">
+            {workItems.map((item, index) => (
+              <div
+                key={index}
+                className="absolute left-1/2 top-0 w-full max-w-md bg-white rounded-xl shadow-lg p-6"
+                style={getCardStyles(index)}
+              >
+                <div className="text-center mb-4">
+                  <div className="inline-block p-3 rounded-full bg-orange-100">
+                    <i className={`${item.icon} text-3xl text-orange-500`}></i>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600 mb-4">{item.description}</p>
-                  <div className="text-sm font-medium text-orange-500">{item.stats}</div>
                 </div>
-              ))}
-            </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-3 text-center">{item.title}</h3>
+                <p className="text-gray-600 mb-4 text-center">{item.description}</p>
+                <div className="text-sm font-medium text-orange-500 text-center">{item.stats}</div>
+              </div>
+            ))}
           </div>
 
           {/* Dots Navigation */}
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex justify-center space-x-2">
             {workItems.map((_, index) => (
               <button
                 key={index}
@@ -143,6 +142,7 @@ const OurWork = () => {
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex ? 'bg-orange-500 w-4' : 'bg-gray-300'
                 }`}
+                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
