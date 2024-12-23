@@ -1,45 +1,116 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const About = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-12 gap-4">
-          {/* Empty columns for logo space */}
-          <div className="col-span-1 lg:col-span-2"></div>
-          
-          {/* Main content aligned with logo */}
-          <div className="col-span-10 lg:col-span-9 px-4 sm:px-0">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-8">About Kosodo</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <p className="text-gray-700 mb-6 leading-relaxed">
-                La mission de Kosodo est de mettre fin à l'itinérance dans la région de Central Lake en exploitant l'attention, les ressources et l'expertise de la communauté. Nous travaillons à briser le cycle de la pauvreté et à mettre fin au sans-abrisme dans la région de Central Lake grâce à une approche globale qui fournit un abri d'urgence, une aide au logement, une formation aux compétences de vie et d'autres services essentiels.
-                </p>
-                <p className="text-gray-700 mb-6 leading-relaxed">
-                Nous pensons que chaque individu mérite un endroit sûr et sécurisé où vivre et la possibilité de construire un avenir meilleur. Notre approche globale répond à la fois aux besoins immédiats et aux solutions à long terme pour aider les familles à atteindre une stabilité et une autonomie durables.
-                </p>
+    <section id="about" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          variants={fadeInUp}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            About <span className="text-orange-500">Kosodo</span>
+          </h2>
+          <div className="w-24 h-1 bg-orange-500 mx-auto mb-8"></div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            variants={fadeInUp}
+            className="relative"
+          >
+            <img
+              src="/about-image.jpg"
+              alt="Our Mission"
+              className="rounded-lg shadow-2xl w-full"
+            />
+            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-orange-500/10 rounded-full blur-2xl z-0"></div>
+            <div className="absolute -top-6 -left-6 w-48 h-48 bg-blue-500/10 rounded-full blur-2xl z-0"></div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            variants={fadeInUp}
+            className="space-y-6"
+          >
+            <h3 className="text-3xl font-semibold text-gray-900">
+              Empowering Communities Since 2010
+            </h3>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              At Kosodo, we believe in the power of community and the potential within every individual. Our journey began with a simple vision: to break the cycle of poverty and create sustainable change in communities across Kenya.
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Through education, healthcare initiatives, and economic empowerment programs, we've helped thousands of families build better lives for themselves and their children.
+            </p>
+            
+            <div className="grid grid-cols-2 gap-6 mt-8">
+              <div className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                <div className="text-3xl font-bold text-orange-500 mb-2">13+</div>
+                <div className="text-gray-600">Years of Impact</div>
               </div>
-              <div className="bg-gray-100 p-8 rounded-lg">
-                <h3 className="text-2xl font-bold mb-4">Our Impact</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <span className="text-3xl font-bold text-orange-500 mr-4">1K+</span>
-                    <span className="text-gray-700">Families helped annually</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-3xl font-bold text-orange-500 mr-4">90%</span>
-                    <span className="text-gray-700">Success rate</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-3xl font-bold text-orange-500 mr-4">30+</span>
-                    <span className="text-gray-700">Years serving the community</span>
-                  </li>
-                </ul>
+              <div className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                <div className="text-3xl font-bold text-orange-500 mb-2">20K+</div>
+                <div className="text-gray-600">Lives Changed</div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          variants={fadeInUp}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20"
+        >
+          <div className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="w-16 h-16 bg-orange-500/10 rounded-full flex items-center justify-center mb-6">
+              <i className="fas fa-heart text-2xl text-orange-500"></i>
+            </div>
+            <h4 className="text-xl font-semibold text-gray-900 mb-4">Our Mission</h4>
+            <p className="text-gray-600">
+              To empower communities through sustainable development and create lasting positive change.
+            </p>
+          </div>
+
+          <div className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="w-16 h-16 bg-orange-500/10 rounded-full flex items-center justify-center mb-6">
+              <i className="fas fa-eye text-2xl text-orange-500"></i>
+            </div>
+            <h4 className="text-xl font-semibold text-gray-900 mb-4">Our Vision</h4>
+            <p className="text-gray-600">
+              A world where every community has the resources and opportunities to thrive.
+            </p>
+          </div>
+
+          <div className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="w-16 h-16 bg-orange-500/10 rounded-full flex items-center justify-center mb-6">
+              <i className="fas fa-hands-helping text-2xl text-orange-500"></i>
+            </div>
+            <h4 className="text-xl font-semibold text-gray-900 mb-4">Our Values</h4>
+            <p className="text-gray-600">
+              Integrity, compassion, and dedication in everything we do to serve our communities.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

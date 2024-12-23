@@ -5,19 +5,19 @@ import About from './components/About';
 import OurWork from './components/OurWork';
 import NewsEvents from './components/NewsEvents';
 import KosodoTeam from './components/KosodoTeam';
-import Auth from './components/Auth';
+import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
+import Modal from './components/Modal';
 import DonationModal from './components/DonationModal';
-import ContactForm from './components/ContactForm';
+import SocialLinks from './components/SocialLinks';
 
 function App() {
   const [authOpen, setAuthOpen] = useState(false);
-  const [authMode, setAuthMode] = useState('signin');
+  const [authType, setAuthType] = useState('login');
   const [donationOpen, setDonationOpen] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
 
-  const handleOpenAuth = (mode = 'signin') => {
-    setAuthMode(mode);
+  const handleOpenAuth = (type) => {
+    setAuthType(type);
     setAuthOpen(true);
   };
 
@@ -33,51 +33,38 @@ function App() {
     setDonationOpen(false);
   };
 
-  const handleOpenContact = () => {
-    setContactOpen(true);
-  };
-
-  const handleCloseContact = () => {
-    setContactOpen(false);
-  };
-
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar 
         onOpenAuth={handleOpenAuth}
         onOpenDonation={handleOpenDonation}
-        onOpenContact={handleOpenContact}
       />
+      <SocialLinks />
       <main className="flex-grow">
         <Hero 
           onOpenAuth={handleOpenAuth}
           onOpenDonation={handleOpenDonation}
-          onOpenContact={handleOpenContact}
         />
         <About />
-        <OurWork />
         <NewsEvents />
+        <OurWork />
+        <ContactUs />
         <KosodoTeam />
       </main>
-
-      <Auth 
-        isOpen={authOpen} 
+      <Footer onOpenDonation={handleOpenDonation} />
+      
+      <Modal
+        isOpen={authOpen}
         onClose={handleCloseAuth}
-        mode={authMode}
-        onSwitchMode={(mode) => setAuthMode(mode)}
-      />
+        title={authType === 'login' ? 'Login' : 'Sign Up'}
+      >
+        {/* Auth form content */}
+      </Modal>
 
       <DonationModal
         isOpen={donationOpen}
         onClose={handleCloseDonation}
       />
-
-      <ContactForm
-        isOpen={contactOpen}
-        onClose={handleCloseContact}
-      />
-
-      <Footer />
     </div>
   );
 }

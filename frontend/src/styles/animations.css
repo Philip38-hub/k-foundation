@@ -1,0 +1,32 @@
+/* Animation Delays */
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.animation-delay-1500 {
+  animation-delay: 1500ms;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2000ms;
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-overlay {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.4)
+  );
+}
+
+/* Button Hover Effects */
+.hover-gradient:hover {
+  background-size: 200% 100%;
+  background-position: right center;
+  transition: all 0.5s ease-out;
+}
