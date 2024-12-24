@@ -174,7 +174,7 @@ const OurWork = () => {
         </div>
 
         {/* Impact Statistics */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -197,7 +197,7 @@ const OurWork = () => {
             <div className="text-4xl font-bold text-orange-500 mb-2">95%</div>
             <div className="text-gray-600">Community Satisfaction</div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
